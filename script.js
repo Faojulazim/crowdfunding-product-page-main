@@ -12,11 +12,15 @@ const thankyouSection = document.querySelector("#thankyouSection");
 const continueBtn = document.querySelectorAll("[data-continue]");
 const pledgeInput = document.querySelectorAll("[data-pledgeInput]");
 
+//toggle section for navbar menu
+
 hamburger.addEventListener("click", (e) => {
   hamburger.classList.add("hidden");
   closeIcon.classList.remove("hidden");
   hiddenDiv.classList.remove("translate-y-[-200%]");
 });
+
+//toggle section for navbar menu
 
 closeIcon.addEventListener("click", (e) => {
   hamburger.classList.remove("hidden");
@@ -24,11 +28,13 @@ closeIcon.addEventListener("click", (e) => {
   hiddenDiv.classList.add("translate-y-[-200%]");
 });
 
+//bookmark button toggle
+
 bookmark.addEventListener("click", (e) => {
   document
     .querySelector("#bookmarkImg")
-    .classList.toggle("translate-x-[115px]");
-  bookmark.querySelector("p").classList.toggle("translate-x-[-53px]");
+    .classList.toggle("sm:translate-x-[115px]");
+  bookmark.querySelector("p").classList.toggle("sm:translate-x-[-53px]");
   bookmark.querySelector("p").classList.toggle("text-ModerateCyan");
   document.querySelector("#circle").classList.toggle("fill-DarkCyan");
   document.querySelector("#path").classList.toggle("fill-[#ffffff]");
@@ -37,8 +43,11 @@ bookmark.addEventListener("click", (e) => {
 backandreward.forEach((element) => {
   element.addEventListener("click", (e) => {
     rewardSection.classList.remove("hidden");
+    document.body.classList.add("overflow-y-hidden");
   });
 });
+
+//on body click change the code to default
 
 document.body.addEventListener("click", (e) => {
   const closest = e.target.closest(
@@ -46,8 +55,11 @@ document.body.addEventListener("click", (e) => {
   );
   if (!closest) {
     rewardSection.classList.add("hidden");
+    document.body.classList.remove("overflow-y-hidden");
   }
 });
+
+//code for elements clicked on the modal and also on condition take the changes to default
 
 inputDiv.forEach((element) => {
   document.body.addEventListener("click", (e) => {
@@ -83,8 +95,8 @@ inputDiv.forEach((element) => {
       }
     }
   });
-
   closeModalIcon.addEventListener("click", (e) => {
+    document.body.classList.remove("overflow-y-hidden");
     rewardSection.classList.add("hidden");
     if (element.querySelector("[data-border]")) {
       element
@@ -123,6 +135,7 @@ inputDiv.forEach((element) => {
           "border-white",
           "border-[6px]"
         );
+      document.body.classList.remove("overflow-y-hidden");
       element.classList.add("border-[hsl(176_50%_47%)]");
       element.querySelector("[data-border]").classList.remove("hidden");
       element.querySelector("[data-pledge]").classList.remove("hidden");
@@ -142,6 +155,7 @@ inputDiv.forEach((element) => {
         element.querySelector("[data-pledge]").classList.add("hidden");
       });
     } else {
+      document.body.classList.remove("overflow-y-hidden");
       element.classList.add("border-[hsl(176_50%_47%)]");
       element
         .querySelector("input")
@@ -200,10 +214,14 @@ inputDiv.forEach((element) => {
   });
 });
 
+//on DOMContentLoaded adding the transition
+
 document.addEventListener("DOMContentLoaded", (event) => {
   document.querySelector("#anime").classList.add("w-[75%]");
   document.querySelector("#anime").classList.remove("w-[0]");
 });
+
+//code for the continue button
 
 continueBtn.forEach((continueButton) => {
   continueButton.addEventListener("click", (e) => {
